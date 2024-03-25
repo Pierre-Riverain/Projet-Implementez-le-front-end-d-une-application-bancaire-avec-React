@@ -52,9 +52,7 @@
     }
 }
 
-.features {
-    display: flex;
-    flex-direction: column;
+.feature {
 
     &-icon {
         width: 100px;
@@ -74,6 +72,11 @@
             margin-bottom: 0.5rem;
         }
     }
+}
+
+.features {
+    display: flex;
+    flex-direction: column;
 
     @include responsive() {
         flex-direction: row;
