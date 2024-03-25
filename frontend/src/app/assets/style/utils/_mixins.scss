@@ -1,0 +1,7 @@
+@import "./variables";
+
+@mixin responsive($screen-responsive-width-size-selected: mobile) {
+    @media screen and (min-width: map-get($responsive-screen-width-size, $screen-responsive-width-size-selected)) {
+        @content;
+    }
+}

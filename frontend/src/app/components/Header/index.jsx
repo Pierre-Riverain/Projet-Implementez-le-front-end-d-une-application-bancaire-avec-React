@@ -1,20 +1,29 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleUser, faUserCircle } from "@fortawesome/free-solid-svg-icons";
+
+import { Link } from "react-router-dom";
+
+import "./index.css";
+import argentBankLogo from "../../assets/img/argentBankLogo.png";
+
 export function Header() {
 
     return (
-        <nav class="main-nav">
-            <a class="main-nav-logo" href="./index.html">
+        <nav className="main-nav">
+            <Link className="main-nav-logo" to="/">
                 <img
-                    class="main-nav-logo-image"
-                    src="./img/argentBankLogo.png"
+                    className="main-nav-logo-image"
+                    src={argentBankLogo}
                     alt="Argent Bank Logo"
                 />
-                <h1 class="sr-only">Argent Bank</h1>
-            </a>
+                <h1 className="sr-only">Argent Bank</h1>
+            </Link>
             <div>
-                <a class="main-nav-item" href="./sign-in.html">
-                    <i class="fa fa-user-circle"></i>
+                <Link className="main-nav-item" to="/sign-in">
+                    {/* <i className="fa fa-user-circle"></i> */}
+                    <FontAwesomeIcon icon={faCircleUser} />
                     Sign In
-                </a>
+                </Link>
             </div>
         </nav>
     );

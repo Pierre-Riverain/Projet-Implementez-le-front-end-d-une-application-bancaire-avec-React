@@ -1,12 +1,13 @@
 import { Provider } from 'react-redux';
-import "./main.css";
-import { store } from './Store';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+import { store } from './Store';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
-import { Route, Router, Routes } from 'react-router';
 import { Home } from './pages/Home';
 import { Signin } from './pages/Signin';
+
+import "./index.css";
 
 function App() {
   return (
@@ -14,8 +15,8 @@ function App() {
       <Router>
         <Header />
           <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/sign-in' element={<Signin />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/sign-in" element={<Signin />} />
           </Routes>
         <Footer />
       </Router>
