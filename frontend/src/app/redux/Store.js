@@ -1,7 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
-import { tokenSlice } from "./Slices/TokenSlice";
-import { userSlice } from "./Slices/UserSlice";
+import { tokenSlice } from "./slices/TokenSlice";
+import { userSlice } from "./slices/UserSlice";
 
 let state = {
     token: "",

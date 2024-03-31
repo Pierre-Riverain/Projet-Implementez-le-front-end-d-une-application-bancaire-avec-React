@@ -8,6 +8,7 @@ import { Home } from './pages/Home';
 import { Signin } from './pages/Signin';
 
 import "./index.css";
+import { User } from './pages/User';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/sign-in" element={<Signin />} />
+            <Route path="/user" element={<User />} />
           </Routes>
         <Footer />
       </Router>

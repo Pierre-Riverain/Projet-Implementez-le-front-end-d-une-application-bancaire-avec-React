@@ -1,0 +1,26 @@
+@import '../../assets/style/utils/mixins';
+
+.button {
+    border-color: #00bc77;
+    background-color: #00bc77;
+    color: #fff;
+    font-weight: bold;
+
+    &-edit {
+        padding: 10px;
+    }
+
+    &-sign-in, &-transaction {
+        display: block;
+        width: 100%;
+        padding: 8px;
+        font-size: 1.1rem;
+        margin-top: 1rem;
+    }
+
+    &-transaction {
+        @include responsive(mobile-small) {
+            width: 200px;
+        }
+    }
+}

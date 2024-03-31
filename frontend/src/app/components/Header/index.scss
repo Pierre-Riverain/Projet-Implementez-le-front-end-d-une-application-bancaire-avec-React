@@ -16,9 +16,14 @@
     &-item {
         text-decoration: none;
         margin-right: 0.5rem;
+        text-align: center;
 
         &:hover {
             text-decoration: underline;
+        }
+
+        i {
+            margin: 0 5px;
         }
     }
 
@@ -30,5 +35,9 @@
             max-width: 100%;
             width: 200px;
         }
+    }
+
+    &-link-container {
+        display: flex;
     }
 }
