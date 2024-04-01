@@ -1,13 +1,28 @@
 .header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   color: #fff;
   margin-bottom: 2rem;
 }
 
-.edit-user-profile-modal {
-  width: 319px;
+.edit-user-profile-show {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.edit-user-profile-modal form {
-  width: 100%;
+.edit-user-profile-hide {
+  display: none;
+}
+.edit-user-profile-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.edit-user-profile-buttons .button {
+  width: 33%;
+  padding: 10px;
 }
 
 /*# sourceMappingURL=index.css.map */

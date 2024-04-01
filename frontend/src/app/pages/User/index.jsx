@@ -25,8 +25,9 @@ export function User() {
     const [getModalTitle, setModalTitle] = useState("");
     const [getModalText, setModalText] = useState("");
 
+    const [isEditUserProfileShow, setEditProfileShow] = useState(false);
+
     const [isMessageModalOpen, setMessageModalOpen] = useState(false);
-    const [isEditModalOpen, setEditModalOpen] = useState(false);
     const [isQuestionModalOpen, setQuestionModalOpen] = useState(false);
 
     const [getNewUserName, setNewUserName] = useState("");
@@ -77,7 +78,7 @@ export function User() {
     const onSaveButtonClicked = async (e) => {
         e.preventDefault();
 
-        setEditModalOpen(false);
+        setEditProfileShow(false);
         try {
 
             const response = await fetch("http://localhost:3001/api/v1/user/profile", {
@@ -106,26 +107,61 @@ export function User() {
         }
     }
 
-    const onEditModalCancel = () => {
-        setEditModalOpen(false);
+    const onEditUserProfileCancel = () => {
         setQuestionModalOpen(true);
     }
 
     const onQuestionModalConfirm = () => {
-        setEditModalOpen(false);
+        setEditProfileShow(false);
         setQuestionModalOpen(false);
     }
 
     const onQuestionModalReject = () => {
         setQuestionModalOpen(false);
-        setEditModalOpen(true);
+        setEditProfileShow(true);
     }
 
     return (
         <main className="main bg-dark">
             <div className="header">
                 <h1>Welcome back<br />{user.firstName + " " + user.lastName}!</h1>
-                <Button className='button-edit' onClick={() => setEditModalOpen(true)}>Edit Name</Button>
+                
+                {!isEditUserProfileShow &&
+                    <Button className={isEditUserProfileShow ? "button-hide" : "button-edit"} onClick={() => setEditProfileShow(true)}>Edit Name</Button>
+                }
+
+                {isEditUserProfileShow &&
+                    <div className={isEditUserProfileShow ? "edit-user-profile-show" : "edit-user-profile-hide"}>
+                        <form onSubmit={(e) => onSaveButtonClicked(e)}>
+                            <p className="message"></p>
+                            <Input
+                                id='userName'
+                                inputName="Username"
+                                value={getNewUserName}
+                                onChange={(event) => { setNewUserName(event.currentTarget.value); }}
+                                required={true} />
+                            <Input
+                                id='firstName'
+                                inputName="Firstname"
+                                disabled={true}
+                                value={user.firstName} />
+                            <Input
+                                id='lastName'
+                                inputName="Lastname"
+                                disabled={true}
+                                value={user.lastName} />
+                            <Input
+                                id='email'
+                                inputName="E-mail"
+                                disabled={true}
+                                value={user.email} />
+                            <div className="edit-user-profile-buttons">
+                                <Button type="submit">Save</Button>
+                                <Button type="button" onClick={() => onEditUserProfileCancel()}>Cancel</Button>
+                            </div>
+                        </form>
+                    </div>
+                }
             </div>
             <h2 className="sr-only">Accounts</h2>
 
@@ -152,41 +188,6 @@ export function User() {
                 onClose={() => setQuestionModalOpen(false)}
                 onConfirmButtonClick={() => onQuestionModalConfirm()}
                 onRejectButtonClick={() => onQuestionModalReject()} />
-            <Modal
-            className="edit-user-profile-modal"
-                isOpen={isEditModalOpen}
-                title="Edit user profile"
-                onClose={() => onEditModalCancel()}>
-                <form onSubmit={(e) => onSaveButtonClicked(e)}>
-                    <p className="message"></p>
-                    <Input
-                        id='userName'
-                        inputName="Username"
-                        value={getNewUserName}
-                        onChange={(event) => {setNewUserName(event.currentTarget.value);}} 
-                        required={true}/> 
-                    <Input
-                        id='firstName'
-                        inputName="Firstname"
-                        disabled={true}
-                        value={user.firstName} />
-                    <Input
-                        id='lastName'
-                        inputName="Lastname"
-                        disabled={true}
-                        value={user.lastName} />
-                    <Input
-                        id='email'
-                        inputName="E-mail"
-                        disabled={true}
-                        value={user.email} />
-                    <div className="modal-buttons">
-                        <Button type="submit">Save</Button>
-                        <Button onClick={() => onEditModalCancel()}>Cancel</Button>
-                    </div>
-                </form>
-
-            </Modal>
         </main>
     )
 };

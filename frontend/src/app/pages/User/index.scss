@@ -1,12 +1,32 @@
 .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     color: #fff;
     margin-bottom: 2rem;
 }
 
-.edit-user-profile-modal {
+.edit-user-profile {
 
-    width: 319px;
-    form {
-        width: 100%;
+    &-show {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &-hide {
+        display: none;
+    }
+
+    &-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+
+        .button {
+            width: 33%;
+            padding: 10px;
+        }
     }
 }
