@@ -48,7 +48,7 @@ export function Header() {
                                 <i className="fa fa-user-circle"></i>
                                 {user.userName}
                             </Link>
-                            <Link className="main-nav-item .link" to="" onClick={() => setModalOpen(true)}>
+                            <Link className="main-nav-item .link" onClick={() => setModalOpen(true)}>
                                 <i className="fa fa-sign-out"></i>
                                 Sign Out
                             </Link>
