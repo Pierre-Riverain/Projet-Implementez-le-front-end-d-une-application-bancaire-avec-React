@@ -21,7 +21,7 @@ export function Signin() {
 
     const token = useSelector(getToken);
 
-    const handleSubmit = async (event) => {
+    const onFormConnexionSubmit = async (event) => {
         event.preventDefault();
 
         try {
@@ -70,7 +70,7 @@ export function Signin() {
             <section className="sign-in-content">
                 <i className="fa fa-user-circle"></i>
                 <h1>Sign In</h1>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={onFormConnexionSubmit}>
                     <Input id="username" inputName="Username" />
                     <Input id="password" inputName="Password" type="password" />
                     <div className="input-remember">
