@@ -9,8 +9,7 @@ import { MessageModal } from "../../components/MessageModal";
 import { useEffect, useState } from "react";
 
 import "./index.css";
-import { redirect, useNavigate } from "react-router";
-import { Modal } from "../../components/Modal";
+import { useNavigate } from "react-router";
 import { QuestionModal } from "../../components/QuestionModal";
 import { Input } from "../../components/Input";
 
@@ -60,7 +59,7 @@ export function User() {
 
     useEffect(() => {
 
-        if (token === undefined || token === null) {
+        if (token === undefined) {
             redirect("/");
         }
 
@@ -112,6 +111,7 @@ export function User() {
     }
 
     const onQuestionModalConfirm = () => {
+        setNewUserName(user.userName);
         setEditProfileShow(false);
         setQuestionModalOpen(false);
     }
